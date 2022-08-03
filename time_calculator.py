@@ -70,15 +70,12 @@ def add_time(start, duration, cur_day = ''):
 
         period += ', ' # for proper output
 
-        # return f"{sum_h}:{sum_m.zfill(2)} {period}{next_day} ({round(days)} days later)"
-
-    if 0 < days <= 1:
+    if 0 < days <= 1 and cur_day == '':
         return f"{sum_h}:{sum_m.zfill(2)} {period} (next day)"
+    elif 0 < days <= 1 and cur_day:
+         return f"{sum_h}:{sum_m.zfill(2)} {period}{next_day} (next day)"
     elif days > 1:
         return f"{sum_h}:{sum_m.zfill(2)} {period}{next_day} ({round(days)} days later)"
     else:
         return f"{sum_h}:{sum_m.zfill(2)} {period}{next_day}"
         
-
-
-print(add_time("2:59 AM", "24:00", "saturDay"))
